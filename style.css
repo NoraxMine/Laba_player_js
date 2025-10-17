@@ -1,0 +1,163 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #f0f4f8, #d9e2ec);
+    margin: 0;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 400px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+}
+
+.screen {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.text-side {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.image {
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.text-side-text {
+    padding-left: 20px;
+}
+
+.text-side-text h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.text-side-text h4 {
+    margin: 5px 0 0;
+    font-size: 14px;
+    color: #777;
+}
+
+.main-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.main-active-button {
+    padding: 10px 16px;
+    font-size: 14px;
+    border: none;
+    border-radius: 6px;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.main-active-button:hover {
+    background-color: #c0c0c0;
+}
+
+#diff-btn.active {
+    background-color: #4caf50;
+    color: white;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.track-link {
+    padding: 10px;
+    margin-bottom: 8px;
+    background-color: #f7f7f7;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    color: #2a5d9f;
+    font-weight: 500;
+}
+
+.track-link:hover {
+    background-color: #e0e0e0;
+}
+
+#audio-player {
+    width: 100%;
+    margin: 20px 0;
+    display: block;
+}
+
+#track-title {
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+button[onclick="goBack()"] {
+    background-color: transparent;
+    border: none;
+    color: #2a5d9f;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    transition: color 0.3s;
+}
+
+button[onclick="goBack()"]:hover {
+    color: #1a3d6f;
+}
+
+.time-display {
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.image-1 {
+    padding-left: 100px;
+    width: 200px;
+}
+
+.hz {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+#volume-control {
+    width: 150px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.lyrics-box {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+    font-size: 14px;
+    color: #333;
+    white-space: pre-wrap;
+}

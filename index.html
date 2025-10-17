@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Музыкальный плеер</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div id="list-screen" class="screen active">
+            <div class="text-side">
+                <img src="sound.jpg" class="image">
+                <div class="text-side-text">
+                    <h2 id="list-title">Sound Title</h2>
+                    <h4 id="list-singer">Singer</h4>
+                </div>
+            </div>
+            <div class="main-buttons">
+                <button class="main-active-button" onclick="playFirstTrack()">Play</button>
+                <button class="main-active-button" id="diff-btn" onclick="toggleShuffle()">Diff</button>
+            </div>
+            <ul>
+                <li class="track-link" onclick="openPlayer(0)">Ace of Base – Beautiful Life</li>
+                <li class="track-link" onclick="openPlayer(1)">Britney Spears – ...Baby One More Time</li>
+                <li class="track-link" onclick="openPlayer(2)">Madcon – Beggin</li>
+                <li class="track-link" onclick="openPlayer(3)">Ofenbach – Be Mine</li>
+                <li class="track-link" onclick="openPlayer(4)">Nico & Vinz – Am I Wrong</li>
+            </ul>
+        </div>
+
+        <div id="player-screen" class="screen">
+            <div class="hz">
+                <button onclick="goBack()">Назад</button>
+                <img src="sound.jpg" class="image-1">
+            </div>
+            <h2 id="track-title"></h2>
+            <audio id="audio-player">
+                <source id="audio-source" src="" type="audio/mpeg">
+            </audio>
+            <div class="time-display">
+                <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+            </div>
+            <div class="main-buttons">
+                <div>
+                    <button class="main-active-button" onclick="prevTrack()">&laquo;</button>
+                    <button class="main-active-button" onclick="playAudio()">&#9654;</button>
+                    <button class="main-active-button" onclick="pauseAudio()">&#9208;</button>
+                    <button class="main-active-button" onclick="nextTrack()">&raquo</button>
+                    <button class="main-active-button" onclick="shufflePlaylist()">&#x2630;</button>
+                </div>
+                <div>
+                    <button class="main-active-button" onclick="downloadTrack()">Скачать</button>
+                    <button class="main-active-button" onclick="showLyrics()">Текст песни</button>
+                    <div id="lyrics-box" class="lyrics-box" style="display: none;"></div>
+                </div>
+            </div>
+            <div class="main-buttons">
+                <label for="volume-control">Громкость</label>
+                <input type="range" id="volume-control" min="0" max="1" step="0.01" value="1" onchange="changeVolume(this.value)">
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
