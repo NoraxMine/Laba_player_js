@@ -17,7 +17,7 @@
             </div>
             <div class="main-buttons">
                 <button class="main-active-button" onclick="playFirstTrack()">Play</button>
-                <button class="main-active-button" id="diff-btn" onclick="toggleShuffle()">Diff</button>
+                <button class="main-active-button" id="diff-btn" onclick="toggleShuffle()">Mix</button>
             </div>
             <ul>
                 <li class="track-link" onclick="openPlayer(0)">Ace of Base – Beautiful Life</li>
@@ -25,6 +25,7 @@
                 <li class="track-link" onclick="openPlayer(2)">Madcon – Beggin</li>
                 <li class="track-link" onclick="openPlayer(3)">Ofenbach – Be Mine</li>
                 <li class="track-link" onclick="openPlayer(4)">Nico & Vinz – Am I Wrong</li>
+                <li class="track-link" onclick="openPlayer(5)">Hazbin Hotel Prime Video – Gravity</li>
             </ul>
         </div>
 
@@ -34,9 +35,7 @@
                 <img src="sound.jpg" class="image-1">
             </div>
             <h2 id="track-title"></h2>
-            <audio id="audio-player">
-                <source id="audio-source" src="" type="audio/mpeg">
-            </audio>
+            <audio id="audio-player" src="" type="audio/mpeg"></audio>
 
             <div class="time-display">
                 <span id="current-time">0:00</span> / <span id="duration">0:00</span>
