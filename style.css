@@ -152,12 +152,24 @@ button[onclick="goBack()"]:hover {
     cursor: pointer;
 }
 
+#player-screen {
+    position: relative;
+}
+
 .lyrics-box {
+    position: absolute;
+    bottom: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    max-height: 150px;
+    overflow-y: auto;
     background-color: #f9f9f9;
     border-radius: 8px;
     padding: 15px;
-    margin-top: 15px;
     font-size: 14px;
     color: #333;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     white-space: pre-wrap;
+    z-index: 10;
 }

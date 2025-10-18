@@ -22,7 +22,6 @@ const artists = [
     'Nico & Vinz'
 ];
 
-
 let currentIndex = 0;
 let isShuffle = false;
 
@@ -45,7 +44,6 @@ function loadTrack(index) {
     audio.load();
     audio.play();
 }
-
 
 function goBack() {
     document.getElementById('player-screen').classList.remove('active');
@@ -105,6 +103,7 @@ function shufflePlaylist() {
         const j = Math.floor(Math.random() * (i + 1));
         [sound_arr[i], sound_arr[j]] = [sound_arr[j], sound_arr[i]];
         [titles[i], titles[j]] = [titles[j], titles[i]];
+        [artists[i], artists[j]] = [artists[j], artists[i]];
     }
     currentIndex = 0;
     loadTrack(currentIndex);
