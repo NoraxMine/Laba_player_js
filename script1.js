@@ -1,44 +1,42 @@
-const playlist = [
-    {
-        file: 'ace-of-base-beautiful-life.mp3',
-        title: 'Beautiful Life',
-        artist: 'Ace of Base',
-        lyrics: "Life is beautiful, life is wonderful..."
-    },
-    {
-        file: 'britney-spears-baby-one-more-time.mp3',
-        title: '...Baby One More Time',
-        artist: 'Britney Spears',
-        lyrics: "Oh baby, baby, how was I supposed to know..."
-    },
-    {
-        file: 'madcon-beggin.mp3',
-        title: 'Beggin',
-        artist: 'Madcon',
-        lyrics: "Beggin', beggin' you, put your loving hand out baby..."
-    },
-    {
-        file: 'ofenbach-be-mine.mp3',
-        title: 'Be Mine',
-        artist: 'Ofenbach',
-        lyrics: "Be mine tonight, let's dance until the morning light..."
-    },
-    {
-        file: 'nico-vinz-am-i-wrong.mp3',
-        title: 'Am I Wrong',
-        artist: 'Nico & Vinz',
-        lyrics: "Am I wrong for thinking we could be something for real..."
-    },
-    {
-        file: 'Gravity - Hazbin Hotel  Prime Video.mp3',
-        title: 'Gravity',
-        artist: 'Hazbin Hotel  Prime Video',
-        lyrics: "Does no one know Who they're dealing with?..."
-    }
-];
-
-const MusicPlayer = {
-    playlist,
+const Player = {
+    playlist: [
+        {
+            file: 'ace-of-base-beautiful-life.mp3',
+            title: 'Beautiful Life',
+            artist: 'Ace of Base',
+            lyrics: "Life is beautiful, life is wonderful..."
+        },
+        {
+            file: 'britney-spears-baby-one-more-time.mp3',
+            title: '...Baby One More Time',
+            artist: 'Britney Spears',
+            lyrics: "Oh baby, baby, how was I supposed to know..."
+        },
+        {
+            file: 'madcon-beggin.mp3',
+            title: 'Beggin',
+            artist: 'Madcon',
+            lyrics: "Beggin', beggin' you, put your loving hand out baby..."
+        },
+        {
+            file: 'ofenbach-be-mine.mp3',
+            title: 'Be Mine',
+            artist: 'Ofenbach',
+            lyrics: "Be mine tonight, let's dance until the morning light..."
+        },
+        {
+            file: 'nico-vinz-am-i-wrong.mp3',
+            title: 'Am I Wrong',
+            artist: 'Nico & Vinz',
+            lyrics: "Am I wrong for thinking we could be something for real..."
+        },
+        {
+            file: 'Gravity - Hazbin Hotel  Prime Video.mp3',
+            title: 'Gravity',
+            artist: 'Hazbin Hotel  Prime Video',
+            lyrics: "Does no one know Who they're dealing with? Think I'll let it go Forget and forgive..."
+        }
+    ],
     currentIndex: 0,
     isShuffle: false,
     audio: document.getElementById('audio-player'),
@@ -86,7 +84,7 @@ const MusicPlayer = {
             let randomIndex;
             do {
                 randomIndex = Math.floor(Math.random() * this.playlist.length);
-            } while (this.playlist.length > 1 && randomIndex === this.currentIndex);
+            } while (randomIndex === this.currentIndex && this.playlist.length > 1);
             this.openPlayer(randomIndex);
         } else {
             this.openPlayer(0);
@@ -95,7 +93,8 @@ const MusicPlayer = {
 
     toggleShuffle() {
         this.isShuffle = !this.isShuffle;
-        document.getElementById('diff-btn').classList.toggle('active', this.isShuffle);
+        const diffBtn = document.getElementById('diff-btn');
+        diffBtn.classList.toggle('active', this.isShuffle);
     },
 
     nextTrack() {
@@ -167,4 +166,19 @@ const MusicPlayer = {
     }
 };
 
-MusicPlayer.init();
+// Глобальные вызовы для HTML
+function openPlayer(index) { Player.openPlayer(index); }
+function goBack() { Player.goBack(); }
+function playFirstTrack() { Player.playFirstTrack(); }
+function toggleShuffle() { Player.toggleShuffle(); }
+function nextTrack() { Player.nextTrack(); }
+function prevTrack() { Player.prevTrack(); }
+function playAudio() { Player.playAudio(); }
+function pauseAudio() { Player.pauseAudio(); }
+function changeVolume(value) { Player.changeVolume(value); }
+function shufflePlaylist() { Player.shufflePlaylist(); }
+function downloadTrack() { Player.downloadTrack(); }
+function showLyrics() { Player.showLyrics(); }
+
+// Инициализация
+Player.init();

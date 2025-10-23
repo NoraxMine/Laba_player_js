@@ -1,17 +1,13 @@
-class MusicPlayer {
-    constructor(playlist, audioElementId) {
+class AudioPlayer {
+    constructor(playlist) {
         this.playlist = playlist;
-        this.audio = document.getElementById(audioElementId);
         this.currentIndex = 0;
         this.isShuffle = false;
-
+        this.audio = document.getElementById('audio-player');
         this.currentTimeEl = document.getElementById('current-time');
         this.durationEl = document.getElementById('duration');
+        this.lyricsBox = document.getElementById('lyrics-box');
 
-        this.initEvents();
-    }
-
-    initEvents() {
         this.audio.addEventListener('loadedmetadata', () => {
             this.durationEl.textContent = this.formatTime(this.audio.duration);
         });
@@ -23,12 +19,6 @@ class MusicPlayer {
         this.audio.addEventListener('ended', () => {
             this.nextTrack();
         });
-    }
-
-    formatTime(seconds) {
-        const mins = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
     }
 
     openPlayer(index) {
@@ -58,7 +48,7 @@ class MusicPlayer {
             let randomIndex;
             do {
                 randomIndex = Math.floor(Math.random() * this.playlist.length);
-            } while (this.playlist.length > 1 && randomIndex === this.currentIndex);
+            } while (randomIndex === this.currentIndex && this.playlist.length > 1);
             this.openPlayer(randomIndex);
         } else {
             this.openPlayer(0);
@@ -118,6 +108,12 @@ class MusicPlayer {
         this.loadTrack(this.currentIndex);
     }
 
+    formatTime(seconds) {
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
     downloadTrack() {
         const link = document.createElement('a');
         link.href = this.playlist[this.currentIndex].file;
@@ -128,15 +124,62 @@ class MusicPlayer {
     }
 
     showLyrics() {
-        const box = document.getElementById('lyrics-box');
-        box.textContent = this.playlist[this.currentIndex].lyrics;
-        box.style.display = box.style.display === 'none' ? 'block' : 'none';
+        const lyrics = this.playlist[this.currentIndex].lyrics;
+        this.lyricsBox.textContent = lyrics;
+        this.lyricsBox.style.display = this.lyricsBox.style.display === 'none' ? 'block' : 'none';
     }
 }
 
-const player = new MusicPlayer(playlist, 'audio-player');
+// Инициализация плеера
+const player = new AudioPlayer([
+    {
+        file: 'ace-of-base-beautiful-life.mp3',
+        title: 'Beautiful Life',
+        artist: 'Ace of Base',
+        lyrics: "Life is beautiful, life is wonderful..."
+    },
+    {
+        file: 'britney-spears-baby-one-more-time.mp3',
+        title: '...Baby One More Time',
+        artist: 'Britney Spears',
+        lyrics: "Oh baby, baby, how was I supposed to know..."
+    },
+    {
+        file: 'madcon-beggin.mp3',
+        title: 'Beggin',
+        artist: 'Madcon',
+        lyrics: "Beggin', beggin' you, put your loving hand out baby..."
+    },
+    {
+        file: 'ofenbach-be-mine.mp3',
+        title: 'Be Mine',
+        artist: 'Ofenbach',
+        lyrics: "Be mine tonight, let's dance until the morning light..."
+    },
+    {
+        file: 'nico-vinz-am-i-wrong.mp3',
+        title: 'Am I Wrong',
+        artist: 'Nico & Vinz',
+        lyrics: "Am I wrong for thinking we could be something for real..."
+    },
+    {
+        file: 'Gravity - Hazbin Hotel Prime Video.mp3',
+        title: 'Gravity',
+        artist: 'Hazbin Hotel Prime Video',
+        lyrics: "Does no one know Who they're dealing with? Think I'll let it go Forget and forgive..."
+    }
+]);
 
-player.playFirstTrack();
-player.toggleShuffle();
-player.nextTrack();
-player.showLyrics();
+// Глобальные функции для HTML
+function openPlayer(index) { player.openPlayer(index); }
+function goBack() { player.goBack(); }
+function playFirstTrack() { player.playFirstTrack(); }
+function toggleShuffle() { player.toggleShuffle(); }
+function nextTrack() { player.nextTrack(); }
+function prevTrack() { player.prevTrack(); }
+function playAudio() { player.playAudio(); }
+function pauseAudio() { player.pauseAudio(); }
+function changeVolume(value) { player.changeVolume(value); }
+function shufflePlaylist() { player.shufflePlaylist(); }
+function downloadTrack() { player.downloadTrack(); }
+function showLyrics() { player.showLyrics(); }
