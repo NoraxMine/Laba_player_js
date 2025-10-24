@@ -2,65 +2,125 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Плеер</title>
+    <title>Два плеера</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Плеер 1 -->
     <div class="container">
-        <div id="list-screen" class="screen active">
+        <div id="list-screen-1" class="screen active">
             <div class="text-side">
                 <img src="sound.jpg" class="image">
                 <div class="text-side-text">
-                    <h2 id="list-title">Sound Title</h2>
-                    <h4 id="list-singer">Singer</h4>
+                    <h2 id="list-title-1">Sound Title</h2>
+                    <h4 id="list-singer-1">Singer</h4>
                 </div>
             </div>
             <div class="main-buttons">
-                <button class="main-active-button" onclick="playFirstTrack()">Play</button>
-                <button class="main-active-button" id="diff-btn" onclick="toggleShuffle()">Mix</button>
+                <button class="main-active-button" onclick="player1.playFirstTrack()">Play</button>
+                <button class="main-active-button" id="diff-btn-1" onclick="player1.toggleShuffle()">Mix</button>
             </div>
             <ul>
-                <li class="track-link" onclick="openPlayer(0)">Ace of Base – Beautiful Life</li>
-                <li class="track-link" onclick="openPlayer(1)">Britney Spears – ...Baby One More Time</li>
-                <li class="track-link" onclick="openPlayer(2)">Madcon – Beggin</li>
-                <li class="track-link" onclick="openPlayer(3)">Ofenbach – Be Mine</li>
-                <li class="track-link" onclick="openPlayer(4)">Nico & Vinz – Am I Wrong</li>
-                <li class="track-link" onclick="openPlayer(5)">Hazbin Hotel Prime Video – Gravity</li>
+                <li class="track-link" onclick="player1.openPlayer(0)">Ace of Base – Beautiful Life</li>
+                <li class="track-link" onclick="player1.openPlayer(1)">Britney Spears – ...Baby One More Time</li>
+                <li class="track-link" onclick="player1.openPlayer(2)">Madcon – Beggin</li>
+                <li class="track-link" onclick="player1.openPlayer(3)">Ofenbach – Be Mine</li>
+                <li class="track-link" onclick="player1.openPlayer(4)">Nico & Vinz – Am I Wrong</li>
+                <li class="track-link" onclick="player1.openPlayer(5)">Hazbin Hotel Prime Video – Gravity</li>
             </ul>
         </div>
 
-        <div id="player-screen" class="screen">
+        <div id="player-screen-1" class="screen">
             <div class="hz">
-                <button onclick="goBack()">Назад</button>
+                <button onclick="player1.goBack()">Назад</button>
                 <img src="sound.jpg" class="image-1">
             </div>
-            <h2 id="track-title"></h2>
-            <audio id="audio-player" src="" type="audio/mpeg"></audio>
+            <h2 id="track-title-1"></h2>
+            <audio id="audio-player-1" src="" type="audio/mpeg"></audio>
 
             <div class="time-display">
-                <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+                <span id="current-time-1">0:00</span> / <span id="duration-1">0:00</span>
             </div>
 
             <div class="main-buttons">
                 <div>
-                    <button class="main-active-button" onclick="prevTrack()">&laquo;</button>
-                    <button class="main-active-button" onclick="playAudio()">&#9654;</button>
-                    <button class="main-active-button" onclick="pauseAudio()">&#9208;</button>
-                    <button class="main-active-button" onclick="nextTrack()">&raquo;</button>
-                    <button class="main-active-button" onclick="shufflePlaylist()">&#x2630;</button>
+                    <button class="main-active-button" onclick="player1.prevTrack()">&laquo;</button>
+                    <button class="main-active-button" onclick="player1.playAudio()">&#9654;</button>
+                    <button class="main-active-button" onclick="player1.pauseAudio()">&#9208;</button>
+                    <button class="main-active-button" onclick="player1.nextTrack()">&raquo;</button>
+                    <button class="main-active-button" onclick="player1.shufflePlaylist()">&#x2630;</button>
                 </div>
                 <div>
-                    <button class="main-active-button" onclick="downloadTrack()">Скачать</button>
-                    <button class="main-active-button" onclick="showLyrics()">Текст песни</button>
+                    <button class="main-active-button" onclick="player1.downloadTrack()">Скачать</button>
+                    <button class="main-active-button" onclick="player1.showLyrics()">Текст песни</button>
                 </div>
             </div>
 
             <div class="main-buttons">
-                <label for="volume-control">Громкость</label>
-                <input type="range" id="volume-control" min="0" max="1" step="0.01" value="1" onchange="changeVolume(this.value)">
+                <label for="volume-control-1">Громкость</label>
+                <input type="range" id="volume-control-1" min="0" max="1" step="0.01" value="1" onchange="player1.changeVolume(this.value)">
             </div>
 
-            <div id="lyrics-box" class="lyrics-box" style="display: none;"></div>
+            <div id="lyrics-box-1" class="lyrics-box" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- Плеер 2 -->
+    <div class="container">
+        <div id="list-screen-2" class="screen active">
+            <div class="text-side">
+                <img src="sound.jpg" class="image">
+                <div class="text-side-text">
+                    <h2 id="list-title-2">Sound Title</h2>
+                    <h4 id="list-singer-2">Singer</h4>
+                </div>
+            </div>
+            <div class="main-buttons">
+                <button class="main-active-button" onclick="player2.playFirstTrack()">Play</button>
+                <button class="main-active-button" id="diff-btn-2" onclick="player2.toggleShuffle()">Mix</button>
+            </div>
+            <ul>
+                <li class="track-link" onclick="player2.openPlayer(0)">Ace of Base – Beautiful Life</li>
+                <li class="track-link" onclick="player2.openPlayer(1)">Britney Spears – ...Baby One More Time</li>
+                <li class="track-link" onclick="player2.openPlayer(2)">Madcon – Beggin</li>
+                <li class="track-link" onclick="player2.openPlayer(3)">Ofenbach – Be Mine</li>
+                <li class="track-link" onclick="player2.openPlayer(4)">Nico & Vinz – Am I Wrong</li>
+                <li class="track-link" onclick="player2.openPlayer(5)">Hazbin Hotel Prime Video – Gravity</li>
+            </ul>
+        </div>
+
+        <div id="player-screen-2" class="screen">
+            <div class="hz">
+                <button onclick="player2.goBack()">Назад</button>
+                <img src="sound.jpg" class="image-1">
+            </div>
+            <h2 id="track-title-2"></h2>
+            <audio id="audio-player-2" src="" type="audio/mpeg"></audio>
+
+            <div class="time-display">
+                <span id="current-time-2">0:00</span> / <span id="duration-2">0:00</span>
+            </div>
+
+            <div class="main-buttons">
+                <div>
+                    <button class="main-active-button" onclick="player2.prevTrack()">&laquo;</button>
+                    <button class="main-active-button" onclick="player2.playAudio()">&#9654;</button>
+                    <button class="main-active-button" onclick="player2.pauseAudio()">&#9208;</button>
+                    <button class="main-active-button" onclick="player2.nextTrack()">&raquo;</button>
+                    <button class="main-active-button" onclick="player2.shufflePlaylist()">&#x2630;</button>
+                </div>
+                <div>
+                    <button class="main-active-button" onclick="player2.downloadTrack()">Скачать</button>
+                    <button class="main-active-button" onclick="player2.showLyrics()">Текст песни</button>
+                </div>
+            </div>
+
+            <div class="main-buttons">
+                <label for="volume-control-2">Громкость</label>
+                <input type="range" id="volume-control-2" min="0" max="1" step="0.01" value="1" onchange="player2.changeVolume(this.value)">
+            </div>
+
+            <div id="lyrics-box-2" class="lyrics-box" style="display: none;"></div>
         </div>
     </div>
 
